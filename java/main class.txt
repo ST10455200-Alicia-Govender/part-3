@@ -1,0 +1,40 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.part3message;
+
+/**
+ *
+ * @author lab_services_student
+ */
+import java.util.List;
+
+public class mainclasss {
+    public static void main(String[] args) {
+        MessageManager1 manager = new MessageManager1();
+        
+        // Load messages from JSON file
+        JsonLoader.loadMessagesFromJson(manager, "path/to/your/messages.json");
+
+        // Display the longest sent message
+        System.out.println("Longest sent message: " + manager.getLongestSentMessage());
+
+        // Display all sent messages
+        List<Part3message> sentMessages = manager.getSentMessages();
+        for (Part3message msg : sentMessages) {
+            System.out.println(msg);
+        }
+
+        // Example of searching for a message by ID
+        Part3message message = manager.findMessageById("MSG001");
+        if (message != null) {
+            System.out.println("Found message: " + message.getMessage());
+        }
+
+        // Example of deleting a message by hash
+        boolean deleted = manager.deleteMessageByHash("H001");
+        System.out.println("Message deleted: " + deleted);
+    }
+}
+
